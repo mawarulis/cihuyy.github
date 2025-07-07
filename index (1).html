@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>CIHUUYYYYY</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: sans-serif;
+      background-image: url('https://i.pinimg.com/originals/e3/36/88/e3368891c1232dc66e3bc6d5f2937a64.gif');
+      background-size: cover;
+      background-position: center;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    h1 {
+      margin-top: 80px;
+      font-size: 28px;
+      font-style: italic;
+      background-color: rgba(255, 255, 255, 0.85);
+      padding: 10px 20px;
+      border-radius: 12px;
+    }
+
+    .area-bawah {
+      margin-top: 30px;
+      width: 300px;
+      height: 180px;
+      position: relative;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      padding-top: 20px;
+    }
+
+    .btn {
+      padding: 10px 25px;
+      font-size: 16px;
+      border: none;
+      border-radius: 25px;
+      cursor: pointer;
+      transition: 0.3s;
+      color: white;
+    }
+
+    #btnSaya {
+      background-color: #4CAF50;
+      position: absolute;
+      left: 20px;
+      top: 20px;
+    }
+
+    #btnBelum {
+      background-color: #FF5722;
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>SIAPA YANG SUDAH MANDI?</h1>
+
+  <div class="area-bawah">
+    <button id="btnSaya" class="btn">Saya Sudah</button>
+    <button id="btnBelum" class="btn">Saya Belum</button>
+  </div>
+
+  <script>
+    const btn = document.getElementById("btnSaya");
+    const area = document.querySelector(".area-bawah");
+    const btnBelum = document.getElementById("btnBelum");
+
+    btn.addEventListener("click", () => {
+      const maxX = area.clientWidth - btn.offsetWidth;
+      const maxY = area.clientHeight - btn.offsetHeight;
+
+      const posisiBelum = btnBelum.getBoundingClientRect();
+      let newX, newY, cobaLagi = 10;
+
+      do {
+        newX = Math.floor(Math.random() * maxX);
+        newY = Math.floor(Math.random() * maxY);
+        cobaLagi--;
+      } while (
+        Math.abs(newX - btnBelum.offsetLeft) < 100 &&
+        Math.abs(newY - btnBelum.offsetTop) < 50 &&
+        cobaLagi > 0
+      );
+
+      btn.style.left = newX + "px";
+      btn.style.top = newY + "px";
+    });
+
+    btnBelum.addEventListener("click", () => {
+      window.location.href = "nextpage.html?play=true";// Ganti dengan link tujuanmu
+    });
+  </script>
+
+</body>
+</html>

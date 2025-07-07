@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Halaman Kedua</title>
+  <style>
+    body {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: sans-serif;
+      background-color: #f9f9f9;
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 30px;
+      color: #FF5722;
+    }
+
+    p {
+      font-size: 20px;
+      margin-top: 10px;
+    }
+
+    img {
+      margin-top: 20px;
+      width: 200px;
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Yah... Belum mandi ya?</h1>
+  <p>MANDI SONO BAU LU</p>
+
+  <img src="https://media.tenor.com/x8v1oNUOmg4AAAAd/rickroll-roll.gif" alt="Semangat!">
+
+  <audio id="musik" loop>
+    <source src="https://files.catbox.moe/52h9h3.mp3" type="audio/mpeg">
+    Browser kamu tidak mendukung audio.
+  </audio>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    const playMusic = urlParams.get('play');
+    const musik = document.getElementById("musik");
+
+    if (playMusic === "true") {
+      musik.play().catch(() => {
+        console.log("Autoplay diblokir, harus klik layar dulu.");
+      });
+    }
+  </script>
+
+</body>
+</html>
